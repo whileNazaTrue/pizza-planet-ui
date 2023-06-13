@@ -73,10 +73,10 @@
 
     <template id="order-item-template">
       <tr class="d-flex">
-        <td class="col-3">{{client_name}}</td>
-        <td class="col-2">{{client_dni}}</td>
-        <td class="col-3">{{client_address}}</td>
-        <td class="col-2 text-right">${{total_price}}</td>
+        <td class="col-3">{{customer.client_name}}</td>
+        <td class="col-2">{{customer.client_dni}}</td>
+        <td class="col-3">{{customer.client_address}}</td>
+        <td class="col-2 text-right">${{customer.total_price}}</td>
         <td class="col-2">
           <div class="text-center">
             <a class="btn btn-success btn-sm view-order" href="/app/order/order-detail.html?_id={{_id}}">View</a>

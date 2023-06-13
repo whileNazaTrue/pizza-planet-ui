@@ -46,10 +46,12 @@ function getOrderData() {
     });
 
     return {
-        client_name: $("input[name='name']").val(),
-        client_dni: $("input[name='dni']").val(),
-        client_address: $("input[name='address']").val(),
-        client_phone: $("input[name='phone']").val(),
+        customer:{
+            client_name: $("input[name='name']").val(),
+            client_dni: $("input[name='dni']").val(),
+            client_address: $("input[name='address']").val(),
+            client_phone: $("input[name='phone']").val(),
+        },
         size_id: $("input[name='size']:checked").val(),
         ingredients,
         beverages,
