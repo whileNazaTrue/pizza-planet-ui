@@ -35,9 +35,14 @@ orderForm.submit(event => {
  * Gets the order data with JQuery
  */
 function getOrderData() {
-    let ingredients = [];
-    $.each($("input[name='ingredients']:checked"), function (el) {
+    const ingredients = [];
+    $("input[name='ingredients']:checked").each(function (index, el) {
         ingredients.push($(this).val());
+    });
+
+    const beverages = [];
+    $("input[name='beverages']:checked").each(function (index, el) {
+        beverages.push($(this).val());
     });
 
     return {
@@ -46,7 +51,8 @@ function getOrderData() {
         client_address: $("input[name='address']").val(),
         client_phone: $("input[name='phone']").val(),
         size_id: $("input[name='size']:checked").val(),
-        ingredients
+        ingredients,
+        beverages,
     };
 }
 
@@ -82,6 +88,17 @@ function fetchOrderSizes() {
         });
 }
 
+function fetchBeverages() {
+    fetch('http://127.0.0.1:5000/beverage/')
+        .then(response => response.json())
+        .then(ingredients => {
+            let rows = ingredients.map(element => createBeverageTemplate(element));
+            let table = $("#beverages tbody");
+            table.append(rows);
+        });
+}
+
+
 function createIngredientTemplate(ingredient) {
     let template = $("#ingredients-template")[0].innerHTML;
     return Mustache.render(template, ingredient);
@@ -92,9 +109,15 @@ function createSizeTemplate(size) {
     return Mustache.render(template, size);
 }
 
+function createBeverageTemplate(beverage) {
+    let template = $("#beverages-template")[0].innerHTML;
+    return Mustache.render(template, beverage);
+}
+
 function loadInformation() {
     fetchIngredients();
     fetchOrderSizes();
+    fetchBeverages();
 }
 
 
