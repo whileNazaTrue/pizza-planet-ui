@@ -67,3 +67,4 @@ function showNotification() {
 
 
 window.onload = loadInformation;
+

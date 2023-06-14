@@ -61,8 +61,9 @@
           <table id="reports" class="table bg-white table-bordered table-hover">
             <thead class="thead-dark">
               <tr class="d-flex">
-                <th class="col-4 text-center">ID</th>
-                <th class="col-4 text-center">Year</th>
+                <th class="col-2 text-center">ID</th>
+                <th class="col-3 text-center">Created at</th>
+                <th class="col-3 text-center">Year</th>
                 <th class="col-4 text-center">Actions</th>
               </tr>
             </thead>
@@ -80,8 +81,9 @@
 
     <template id="report-item-template">
       <tr class="d-flex">
-        <td class="col-4 text-center">{{_id}}</td>
-        <td class="col-4">{{year}}</td>
+        <td class="col-2 text-center">{{_id}}</td>
+        <td class="col-3">{{created_at}}</td>
+        <td class="col-3">{{year}}</td>
         <td class="col-4 text-center">
           <div class="text-center">
             <a
