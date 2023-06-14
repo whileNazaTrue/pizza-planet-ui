@@ -51,3 +51,9 @@ function showNotification() {
     reportAlert.toggle();
     setTimeout(() => reportAlert.toggle(), 5000);
 }
+
+function showNotification() {
+    let reportAlert = $("#report-alert");
+    reportAlert.toggle();
+    setTimeout(() => reportAlert.toggle(), 5000);
+}
