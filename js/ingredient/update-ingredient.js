@@ -1,5 +1,5 @@
 
-const  fetchIngredient= async (_id) =>{
+const fetchIngredient= async (_id) =>{
     await fetch(`http://127.0.0.1:5000/ingredient/id/${_id}`)
         .then(response => response.json())
         .then(ingredient => {
