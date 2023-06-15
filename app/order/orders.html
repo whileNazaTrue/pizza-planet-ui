@@ -42,6 +42,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/app/size/sizes.html">Sizes</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/app/beverage/beverages.html">Beverages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/app/report/report.html">Reports</a>
+          </li>
         </ul>
       </nav>
     </header>
@@ -70,9 +76,9 @@
 
     <template id="order-item-template">
       <tr class="d-flex">
-        <td class="col-3">{{client_name}}</td>
-        <td class="col-2">{{client_dni}}</td>
-        <td class="col-3">{{client_address}}</td>
+        <td class="col-3">{{customer.client_name}}</td>
+        <td class="col-2">{{customer.client_dni}}</td>
+        <td class="col-3">{{customer.client_address}}</td>
         <td class="col-2 text-right">${{total_price}}</td>
         <td class="col-2">
           <div class="text-center">

@@ -1,6 +1,6 @@
-function postIngredient(ingredient) {
+const postIngredient = async(ingredient) => {
 
-    fetch('http://127.0.0.1:5000/ingredient/', {
+    await fetch('http://127.0.0.1:5000/ingredient/', {
         method: 'POST',
         body: JSON.stringify(ingredient),
         headers: {
@@ -40,7 +40,7 @@ function getIngredientData() {
 /**
  * Shows a notification when the order is accepted
  */
-function showNotification() {
+const showNotification =() => {
     let ingredientAlert = $("#ingredient-alert");
     ingredientAlert.toggle();
     setTimeout(() => ingredientAlert.toggle(), 5000);

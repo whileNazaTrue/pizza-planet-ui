@@ -1,14 +1,18 @@
+const fetchSizes = async () => {
+  try {
+    const response = await fetch('http://127.0.0.1:5000/size/');
+    const sizes = await response.json();
+    const rows = sizes.map(createSizeTemplate);
+    const table = $("#sizes tbody");
+    table.append(rows);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-fetch('http://127.0.0.1:5000/size/')
-    .then(response => response.json())
-    .then(sizes => {
-        let rows = sizes.map(element => createSizeTemplate(element));
-        let table = $("#sizes tbody");
-        table.append(rows);
-    });
+const createSizeTemplate = (size) => {
+  let template = $("#size-item-template")[0].innerHTML;
+  return Mustache.render(template, size);
+};
 
-
-function createSizeTemplate(size) {
-    let template = $("#size-item-template")[0].innerHTML;
-    return Mustache.render(template, size);
-}
+fetchSizes();

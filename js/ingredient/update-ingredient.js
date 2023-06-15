@@ -1,6 +1,6 @@
 
-function fetchIngredient(_id) {
-    fetch(`http://127.0.0.1:5000/ingredient/id/${_id}`)
+const fetchIngredient= async (_id) =>{
+    await fetch(`http://127.0.0.1:5000/ingredient/id/${_id}`)
         .then(response => response.json())
         .then(ingredient => {
             $("#_id").val(ingredient._id);
@@ -10,13 +10,13 @@ function fetchIngredient(_id) {
         });
 }
 
-function loadInformation() {
+const loadInformation = () => {
     let urlParams = new URLSearchParams(window.location.search);
     let _id = urlParams.get('_id');
     fetchIngredient(_id)
 }
 
-function putIngredient(ingredient) {
+const putIngredient= (ingredient) =>{
 
     fetch('http://127.0.0.1:5000/ingredient/', {
         method: 'PUT',
@@ -26,7 +26,7 @@ function putIngredient(ingredient) {
         },
     })
         .then(res => res.json())
-        .then(res => showNotification());
+        .then(res => showNotification("#ingredient-alert"));
 
 
 }
@@ -48,7 +48,7 @@ ingredientForm.submit(event => {
 /**
  * Gets the ingredient data with JQuery
  */
-function getIngredientData() {
+const getIngredientData = () => {
     return {
         _id: $("input[id='_id']").val(),
         name: $("input[id='name']").val(),
@@ -56,10 +56,8 @@ function getIngredientData() {
     };
 }
 
-/**
- * Shows a notification when the ingredient is accepted
- */
-function showNotification() {
+
+const showNotification= () => {
     let ingredientAlert = $("#ingredient-alert");
     ingredientAlert.toggle();
     setTimeout(() => ingredientAlert.toggle(), 5000);
