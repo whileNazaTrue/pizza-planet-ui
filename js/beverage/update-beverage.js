@@ -1,6 +1,7 @@
 
-function fetchBeverage(_id) {
-    fetch(`http://127.0.0.1:5000/beverage/id/${_id}`)
+
+const fetchBeverage = async (_id)  =>{
+    await fetch(`http://127.0.0.1:5000/beverage/id/${_id}`)
         .then(response => response.json())
         .then(beverage => {
             $("#_id").val(beverage._id);
@@ -10,13 +11,13 @@ function fetchBeverage(_id) {
         });
 }
 
-function loadInformation() {
+const loadInformation = () =>{
     let urlParams = new URLSearchParams(window.location.search);
     let _id = urlParams.get('_id');
     fetchBeverage(_id)
 }
 
-function putBeverage(beverage) {
+const putBeverage = (beverage) => {
 
     fetch('http://127.0.0.1:5000/beverage/', {
         method: 'PUT',
@@ -26,7 +27,7 @@ function putBeverage(beverage) {
         },
     })
         .then(res => res.json())
-        .then(res => showNotification());
+        .then(res => showNotification("#beverage-alert"));
 }
 
 
@@ -42,20 +43,12 @@ beverageForm.submit(event => {
 });
 
 
-function getBeverageData() {
+const getBeverageData = () => {
     return {
         _id: $("input[id='_id']").val(),
         name: $("input[id='name']").val(),
         price: $("input[id='price']").val()
     };
 }
-
-
-function showNotification() {
-    let beverageAlert = $("#beverage-alert");
-    beverageAlert.toggle();
-    setTimeout(() => beverageAlert.toggle(), 5000);
-}
-
 
 window.onload = loadInformation;

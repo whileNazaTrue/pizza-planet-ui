@@ -1,14 +1,18 @@
+const fetchReports = async () => {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/report/");
+    const reports = await response.json();
+    const rows = reports.map(createReportTemplate);
+    const table = $("#reports tbody");
+    table.append(rows);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-fetch('http://127.0.0.1:5000/report/')
-    .then(response => response.json())
-    .then(reports => {
-        let rows = reports.map(element => createReportTemplate(element));
-        let table = $("#reports tbody");
-        table.append(rows);
-    });
+const createReportTemplate = (report) => {
+  let template = $("#report-item-template")[0].innerHTML;
+  return Mustache.render(template, report);
+};
 
-
-function createReportTemplate(report) {
-    let template = $("#report-item-template")[0].innerHTML;
-    return Mustache.render(template, report);
-}
+fetchReports();
