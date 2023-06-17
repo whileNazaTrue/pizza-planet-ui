@@ -103,17 +103,17 @@
         <tbody>
           <tr>
             <td>
-              <p id="size">{{size.name}} - ${{size.price}}</p>
+              <p id="size">{{size_for_order.name}} - ${{size_for_order.price}}</p>
             </td>
             <td id="ingredients">
-              {{#ingredients}}
+              {{#ingredients_for_order}}
                 <p>{{name}} - ${{price}}</p>
-              {{/ingredients}}
+              {{/ingredients_for_order}}
             </td>
             <td id="beverages">
-              {{#beverages}}
+              {{#beverages_for_order}}
                 <p>{{name}} - ${{price}}</p>
-              {{/beverages}}
+              {{/beverages_for_order}}
             </td>
           </tr>
           <tr class="table-active">
